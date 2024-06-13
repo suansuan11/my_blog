@@ -1,44 +1,34 @@
 <template>
   <div id="blog_header">
+    <!-- 这是什么? -->
     <div id="icon">
-      <h1><a href="./index.html" id="self_href">涩</a></h1>
+      <h1><a href="/home" id="self_href">涩</a></h1>
     </div>
+
     <nav id="nav_bar">
       <ul>
         <li>
-          <a href="./index.html">首页</a>
-          <a href="">相片</a>
-          <a href="">关于</a>
+          <router-link to="/home" active-class="">首页</router-link>
+          <router-link to="/photos" active-class="">相片</router-link>
+          <router-link to="/about" active-class="">关于</router-link>
         </li>
       </ul>
     </nav>
 
     <div id="about_me">
-      <button type="button" id="login_btn">登录</button>
-      <a href="./index.html"><img src="../assets/my_img.png" alt="我" id="circle_img" /></a>
+      <button type="button" id="login_btn" @click="handelLogin">登录</button>
+      <img src="../assets/my_img.png" alt="我" id="circle_img" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
+import { router } from '@/router'
 
-function login_out() {
-  const btn = document.getElementById('login_btn')
-  console.log(btn)
-  const box = document.getElementById('login_box')
-  console.log(box)
-  if (btn && box) {
-    btn.addEventListener('click', function () {
-      box.classList.toggle('new_login_box')
-    })
-  } else {
-    console.error('Button or Box not found')
-  }
+const handelLogin = () => {
+  router.push('/login')
 }
-onMounted(() => {
-  login_out()
-})
 </script>
 
 <style>
@@ -46,44 +36,44 @@ onMounted(() => {
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 50px;
   background-color: rgba(50, 215, 223, 0.851);
   box-shadow: 0 0 20px rgb(29, 58, 59);
 }
 
 #icon {
-  width: 20%;
-  height: 50px;
   display: flex;
   align-items: center;
+  width: 20%;
+  height: 50px;
   text-align: start;
 }
 #icon a {
   position: relative;
   left: 20px;
-  text-decoration: none;
   color: #666;
+  text-decoration: none;
 }
 
 #nav_bar {
-  text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 60%;
+  text-align: center;
 }
 #nav_bar a {
   padding: 20px;
   margin: 10px;
+  font-weight: bolder;
   color: #666666;
   text-decoration: none;
-  font-weight: bolder;
 }
 #nav_bar ul,
 li {
@@ -92,8 +82,8 @@ li {
 
 #about_me {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 20%;
   height: 50px;
   text-align: end;
@@ -101,15 +91,15 @@ li {
 #circle_img {
   width: 40px;
   height: 40px;
-  border-radius: 100%;
   object-fit: cover;
+  border-radius: 100%;
 }
 
 #login_btn {
-  margin-left: 50px;
-  margin-right: 20px;
-  background-color: rgb(0, 0, 0, 0);
   width: 50px;
+  margin-right: 20px;
+  margin-left: 50px;
+  background-color: rgb(0, 0, 0, 0);
   border: none;
   border-radius: 5px;
 }

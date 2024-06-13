@@ -72,10 +72,10 @@ export default defineComponent({
 <style>
 #post_list,
 #comment_list {
+  padding: 20px;
   color: rgb(0, 0, 0);
   background-color: rgb(25, 119, 202);
   border-radius: 5px;
   box-shadow: 0 0 10px black;
-  padding: 20px;
 }
 </style>
