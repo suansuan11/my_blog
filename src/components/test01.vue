@@ -18,65 +18,64 @@
         <button @click="deleteComment(comment.id)">删除评论</button>
       </li>
     </ul>
-    
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
-import { getPosts, getComments, deleteCommentById } from '@/api';
-import type { postItem, commentItem } from '@/api';
+import { defineComponent, onMounted, ref } from 'vue'
+import { getPosts, getComments, deleteCommentById } from '@/api'
+import type { postItem, commentItem } from '@/api'
 
 export default defineComponent({
   name: 'List',
   setup() {
-    const posts = ref<postItem[]>([]);
-    const comments = ref<commentItem[]>([]);
+    const posts = ref<postItem[]>([])
+    const comments = ref<commentItem[]>([])
 
     const fetchPosts = async () => {
       try {
-        const response = await getPosts();
-        posts.value = response;
+        const response = await getPosts()
+        posts.value = response
       } catch (error) {
-        console.error('Failed to fetch posts:', error);
+        console.error('Failed to fetch posts:', error)
       }
-    };
+    }
     const fetchComments = async () => {
       try {
-        const response = await getComments();
-        comments.value = response;
+        const response = await getComments()
+        comments.value = response
       } catch (error) {
-        console.error('Failed to fetch comments:', error);
+        console.error('Failed to fetch comments:', error)
       }
-    };
+    }
     const deleteComment = async (commentId: number) => {
       try {
-        await deleteCommentById(commentId);
-        comments.value = comments.value.filter(comment => comment.id !== commentId);
+        await deleteCommentById(commentId)
+        comments.value = comments.value.filter((comment) => comment.id !== commentId)
       } catch (error) {
-        console.error('Failed to delete comment:', error);
+        console.error('Failed to delete comment:', error)
       }
-    };
+    }
 
-    onMounted(fetchComments);
-    onMounted(fetchPosts);
+    onMounted(fetchComments)
+    onMounted(fetchPosts)
 
     return {
       posts,
       comments,
-      deleteComment
-    };
-  }
-});
+      deleteComment,
+    }
+  },
+})
 </script>
 
-
 <style>
-  #post_list, #comment_list{
-    color: rgb(0, 0, 0);
-    background-color: rgb(25, 119, 202);
-    border-radius: 5px;
-    box-shadow: 0 0 10px black;
-    padding: 20px;
-  }
+#post_list,
+#comment_list {
+  color: rgb(0, 0, 0);
+  background-color: rgb(25, 119, 202);
+  border-radius: 5px;
+  box-shadow: 0 0 10px black;
+  padding: 20px;
+}
 </style>
