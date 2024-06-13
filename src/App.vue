@@ -1,21 +1,21 @@
 <template>
   <div class="app">
-    <blog_header />
-    <top_img />
-    <login_box />
+    <blog-header />
+    <top-img />
+    <login-box />
     <test01 />
   </div>
 </template>
 
 <script lang="ts">
-import blog_header from './components/blog_header.vue'
-import top_img from './components/top_img.vue'
-import login_box from './components/login_box.vue'
-import test01 from './components/test01.vue'
+import blogHeader from '@/components/blog-header.vue'
+import topImg from '@/components/top-img.vue'
+import loginBox from '@/components/login-box.vue'
+import test01 from '@/components/test01.vue'
 
 export default {
   name: 'App',
-  components: { blog_header, top_img, login_box, test01 },
+  components: { blogHeader, topImg, loginBox, test01 },
 }
 </script>
 

@@ -23,8 +23,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { getPosts, getComments, deleteCommentById } from '@/api'
-import type { postItem, commentItem } from '@/api'
+import { getPosts, getComments, deleteCommentById } from '@/service/api'
+import type { postItem, commentItem } from '@/service/api'
 
 export default defineComponent({
   name: 'List',
